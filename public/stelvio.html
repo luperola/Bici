@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-eclsquiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <script src="stelvio.js" defer></script>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+  </head>
+
+  <!-- npm start per iniziare con nodemon -->
+  <body>
+    <br />
+    <p id="clock"></p>
+    <br />
+    <h2 style="padding-left: 20px">Stelvio da Bormio</h2>
+    <h6 style="padding-left: 20px; display: none" id="tempoTotalePag1"></h6>
+    <br />
+    <div class="container" id="container1">
+      <div style="display: flex; justify-content: center">
+        <h3 class="pKm">Select for Km 1</h3>
+        <h3 class="pKm">Select for Km 2</h3>
+        <h3 class="pKm">Select for Km 3</h3>
+      </div>
+
+      <div style="display: flex; justify-content: center">
+        <select id="myFront" class="form-select">
+          <option value="0">Rapporto</option>
+          <option value="1">34/34</option>
+          <option value="1.13">34/30</option>
+          <option value="1.26">34/27</option>
+          <option value="1.42">34/24</option>
+          <option value="1.70">34/20</option>
+          <option value="1.89">34/18</option>
+          <option value="2.12">34/16</option>
+          <option value="2.83">34/12</option>
+        </select>
+
+        <select id="myFront2" class="form-select">
+          <option value="0">Rapporto</option>
+          <option value="1">34/34</option>
+          <option value="1.13">34/30</option>
+          <option value="1.26">34/27</option>
+          <option value="1.42">34/24</option>
+          <option value="1.70">34/20</option>
+          <option value="1.89">34/18</option>
+          <option value="2.12">34/16</option>
+          <option value="2.83">34/12</option>
+        </select>
+
+        <select id="myFront3" class="form-select">
+          <option value="0">Rapporto</option>
+          <option value="1">34/34</option>
+          <option value="1.13">34/30</option>
+          <option value="1.26">34/27</option>
+          <option value="1.42">34/24</option>
+          <option value="1.70">34/20</option>
+          <option value="1.89">34/18</option>
+          <option value="2.12">34/16</option>
+          <option value="2.83">34/12</option>
+        </select>
+      </div>
+      <div style="display: flex; justify-content: center">
+        <div class="input-group" id="rpmInput">
+          <input
+            type="text"
+            class="form-control"
+            id="rpm"
+            aria-describedby="rpm-button"
+            placeholder="rounds-per-minute"
+          />
+          <button class="btn btn-primary" type="button" id="rpm-button">
+            Click here to start
+          </button>
+        </div>
+
+        <div class="input-group" id="rpmInput">
+          <input
+            type="text"
+            class="form-control"
+            id="rpm2"
+            aria-describedby="rpm-button2"
+            placeholder="rounds-per-minute"
+          />
+          <button class="btn btn-primary" type="button" id="rpm-button2">
+            Click here to start
+          </button>
+        </div>
+        <div class="input-group" id="rpmInput">
+          <input
+            type="text"
+            class="form-control"
+            id="rpm3"
+            aria-describedby="rpm-button3"
+            placeholder="rounds-per-minute"
+          />
+          <button class="btn btn-primary" type="button" id="rpm-button3">
+            Click here to start
+          </button>
+        </div>
+      </div>
+      <br /><br />
+      <button class="btn btn-primary" onclick="page2()">Next</button>
+    </div>
+
+    <!-- SECONDA PAGINA - SECONDA PAGINA -->
+    <div class="container" id="container2" style="display: none">
+      <div style="display: flex; justify-content: center">
+        <h3 class="pKm">Select for Km 4</h3>
+        <h3 class="pKm">Select for Km 5</h3>
+        <h3 class="pKm">Select for Km 6</h3>
+      </div>
+
+      <div style="display: flex; justify-content: center">
+        <select id="myFront4" class="form-select">
+          <option value="0">Rapporto</option>
+          <option value="1">34/34</option>
+          <option value="1.13">34/30</option>
+          <option value="1.26">34/27</option>
+          <option value="1.42">34/24</option>
+          <option value="1.70">34/20</option>
+          <option value="1.89">34/18</option>
+          <option value="2.12">34/16</option>
+          <option value="2.83">34/12</option>
+        </select>
+
+        <select id="myFront5" class="form-select">
+          <option value="0">Rapporto</option>
+          <option value="1">34/34</option>
+          <option value="1.13">34/30</option>
+          <option value="1.26">34/27</option>
+          <option value="1.42">34/24</option>
+          <option value="1.70">34/20</option>
+          <option value="1.89">34/18</option>
+          <option value="2.12">34/16</option>
+          <option value="2.83">34/12</option>
+        </select>
+
+        <select id="myFront6" class="form-select">
+          <option value="0">Rapporto</option>
+          <option value="1">34/34</option>
+          <option value="1.13">34/30</option>
+          <option value="1.26">34/27</option>
+          <option value="1.42">34/24</option>
+          <option value="1.70">34/20</option>
+          <option value="1.89">34/18</option>
+          <option value="2.12">34/16</option>
+          <option value="2.83">34/12</option>
+        </select>
+      </div>
+      <div style="display: flex; justify-content: center">
+        <div class="input-group" id="rpmInput">
+          <input
+            type="text"
+            class="form-control"
+            id="rpm4"
+            aria-describedby="rpm-button"
+            placeholder="rounds-per-minute"
+          />
+          <button class="btn btn-primary" type="button" id="rpm-button4">
+            Click here to start
+          </button>
+        </div>
+
+        <div class="input-group" id="rpmInput">
+          <input
+            type="text"
+            class="form-control"
+            id="rpm5"
+            aria-describedby="rpm-button5"
+            placeholder="rounds-per-minute"
+          />
+          <button class="btn btn-primary" type="button" id="rpm-button5">
+            Click here to start
+          </button>
+        </div>
+        <div class="input-group" id="rpmInput">
+          <input
+            type="text"
+            class="form-control"
+            id="rpm6"
+            aria-describedby="rpm-button6"
+            placeholder="rounds-per-minute"
+          />
+          <button class="btn btn-primary" type="button" id="rpm-button6">
+            Click here to start
+          </button>
+        </div>
+      </div>
+      <br /><br />
+      <button class="btn btn-primary" onclick="page3()">Next</button>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
