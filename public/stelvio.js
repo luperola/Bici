@@ -89,7 +89,7 @@ function km1() {
   table.style.border = "1px solid black";
   table.style.marginLeft = "auto";
   table.style.marginRight = "auto";
-  table.style.marginTop = "150px";
+  table.style.marginTop = "70px";
 
   var cells = table.getElementsByTagName("td");
   for (var i = 0; i < cells.length; i++) {
