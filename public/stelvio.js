@@ -186,7 +186,8 @@ function km1() {
     for (var j = 0; j < 13; j++) {
       var cell = document.createElement("td");
       // set some content for the cell
-      cell.textContent = "Row " + (i + 1) + ", Column " + (j + 1);
+      //cell.textContent = "Row " + (i + 1) + ", Column " + (j + 1);
+
       cell.style.width = "80px";
       cell.style.height = "30px";
       row.appendChild(cell);
@@ -361,12 +362,12 @@ function kmTest(kilometro) {
       parseFloat(roundPm[kilometro - 1]) *
       1.507) /
     60;
-  console.log(
-    "pignone=",
-    selectedPignone[kilometro - 1],
-    "RPM=",
-    roundPm[kilometro - 1]
-  );
+  // console.log(
+  //   "pignone=",
+  //   selectedPignone[kilometro - 1],
+  //   "RPM=",
+  //   roundPm[kilometro - 1]
+  // );
   var powerKm1 =
     parseFloat(selectedOption) *
       parseFloat(pendenza[kilometro] / 100) *
@@ -374,7 +375,7 @@ function kmTest(kilometro) {
       9.81 +
     parseFloat(selectedOption) * velocitaKm3 * 0.03924 +
     0.1968 * velocitaKm3 ** 3;
-  console.log("power=", powerKm1);
+  // console.log("power=", powerKm1);
   var row1Power = document.getElementsByTagName("tr")[2];
   var cell1Power = row1Power.getElementsByTagName("td")[kilometro];
   cell1Power.style.textAlign = "center";

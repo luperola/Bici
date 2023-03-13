@@ -4,7 +4,7 @@ let pendenza = [],
   roundPm = [],
   cellMinAggr = [],
   cellMinTempoTotale = [];
-console.log("tempo da pag1 = ", localStorage.getItem("Data5"));
+// console.log("tempo da pag1 = ", localStorage.getItem("Data5"));
 
 const pignoniAnt = document.getElementById("myFront");
 pignoniAnt.addEventListener("change", function () {
@@ -187,7 +187,7 @@ function km1() {
     for (var j = 0; j < 12; j++) {
       var cell = document.createElement("td");
       // set some content for the cell
-      cell.textContent = "Row " + (i + 1) + ", Column " + (j + 1);
+      //cell.textContent = "Row " + (i + 1) + ", Column " + (j + 1);
       cell.style.width = "80px";
       cell.style.height = "30px";
       row.appendChild(cell);
@@ -287,9 +287,7 @@ function km1() {
 
   // Minuti Km 1 su riga 4 (e anche 5 come aggregate)
   var durata = ((km[1] - km[0]) * 1000) / velocitaKm1 / 60;
-  console.log("km[0]", km[0], "Km[1]", km[1]);
   var minuti = durata.toFixed(2);
-  console.log("minuti", minuti);
   const minutes = Math.floor(minuti);
   const seconds = Math.floor((minuti - minutes) * 60);
   formattedTime = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
@@ -303,9 +301,7 @@ function km1() {
   cellMin.textContent = formattedTime;
   const duration1 = formattedTime;
   const duration2 = timePag1;
-  console.log("time da Pag1", timePag1, "aggr. Time=", formattedTime);
   const totalDuration = addDurations(duration1, duration2);
-  console.log("total=", totalDuration);
   cellMinCopy.textContent = totalDuration;
   cellMinAggr.push(totalDuration);
 }
@@ -368,12 +364,12 @@ function kmTest(kilometro) {
       parseFloat(roundPm[kilometro - 1]) *
       1.507) /
     60;
-  console.log(
-    "pignone=",
-    selectedPignone[kilometro - 1],
-    "RPM=",
-    roundPm[kilometro - 1]
-  );
+  // console.log(
+  //   "pignone=",
+  //   selectedPignone[kilometro - 1],
+  //   "RPM=",
+  //   roundPm[kilometro - 1]
+  // );
   var powerKm1 =
     parseFloat(selectedOption) *
       parseFloat(pendenza[kilometro] / 100) *
@@ -381,7 +377,7 @@ function kmTest(kilometro) {
       9.81 +
     parseFloat(selectedOption) * velocitaKm3 * 0.03924 +
     0.1968 * velocitaKm3 ** 3;
-  console.log("power=", powerKm1);
+  // console.log("power=", powerKm1);
   var row1Power = document.getElementsByTagName("tr")[2];
   var cell1Power = row1Power.getElementsByTagName("td")[kilometro];
   cell1Power.style.textAlign = "center";
