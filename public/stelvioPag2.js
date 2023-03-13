@@ -4,6 +4,7 @@ let pendenza = [],
   roundPm = [],
   cellMinAggr = [],
   cellMinTempoTotale = [];
+console.log("tempo da pag1 = ", localStorage.getItem("Data5"));
 
 const pignoniAnt = document.getElementById("myFront");
 pignoniAnt.addEventListener("change", function () {
@@ -106,7 +107,6 @@ function page4() {
 }
 
 function page5() {
-  localStorage.setItem("Data5", totalDuration);
   window.location.href = "stelvioPag2.html";
 }
 
@@ -176,6 +176,7 @@ contoClicks12.addEventListener("click", () => {
 
 function km1() {
   var selectedOption = localStorage.getItem("Data1");
+  var timePag1 = localStorage.getItem("Data5");
   roundPm.push(document.getElementById("rpm").value);
 
   // create a table element
@@ -183,7 +184,7 @@ function km1() {
   // create rows and cells
   for (var i = 0; i < 6; i++) {
     var row = document.createElement("tr");
-    for (var j = 0; j < 13; j++) {
+    for (var j = 0; j < 12; j++) {
       var cell = document.createElement("td");
       // set some content for the cell
       cell.textContent = "Row " + (i + 1) + ", Column " + (j + 1);
@@ -221,7 +222,7 @@ function km1() {
   }
 
   // scrivo Km su riga 1 le prime 12 colonne
-  km = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  km = [12, 13, 14, 14.9, 15.4, 15.9, 17, 18, 18.8, 20, 21.5, 22];
   for (let k = 1; k < km.length; k++) {
     var row1plus = document.getElementsByTagName("tr")[0];
     var cellKm = row1plus.getElementsByTagName("td")[k];
@@ -231,7 +232,7 @@ function km1() {
   }
 
   // scrivo pendenza su riga 2 le prime 12 colonne
-  pendenza = [0, 4.2, 6.3, 6.9, 7.8, 8.4, 4.0, 8.1, 7.8, 6.9, 5.5, 9.5, 8.0];
+  pendenza = [0, 7.5, 7.7, 7.9, 8.9, 6.5, 3.1, 6.8, 6.1, 8.2, 8.1, 8.1];
   for (let k = 1; k < pendenza.length; k++) {
     var row1Pend = document.getElementsByTagName("tr")[1];
     var cellPend = row1Pend.getElementsByTagName("td")[k];
@@ -243,17 +244,16 @@ function km1() {
   // scrivo rapporto su riga
   let posizione = [
     "0",
-    "8A",
-    "9A",
     "9B",
     "10A",
     "10A",
-    "8A",
-    "10A",
-    "10A",
-    "9B",
-    "8B",
     "10B",
+    "9A",
+    "7B",
+    "10A",
+    "8B",
+    "10A",
+    "10A",
     "10A",
   ];
   for (let k = 1; k < posizione.length; k++) {
@@ -287,7 +287,9 @@ function km1() {
 
   // Minuti Km 1 su riga 4 (e anche 5 come aggregate)
   var durata = ((km[1] - km[0]) * 1000) / velocitaKm1 / 60;
+  console.log("km[0]", km[0], "Km[1]", km[1]);
   var minuti = durata.toFixed(2);
+  console.log("minuti", minuti);
   const minutes = Math.floor(minuti);
   const seconds = Math.floor((minuti - minutes) * 60);
   formattedTime = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
@@ -299,8 +301,13 @@ function km1() {
   cellMin.style.textAlign = "center";
   cellMinCopy.style.textAlign = "center";
   cellMin.textContent = formattedTime;
-  cellMinCopy.textContent = formattedTime;
-  cellMinAggr.push(formattedTime);
+  const duration1 = formattedTime;
+  const duration2 = timePag1;
+  console.log("time da Pag1", timePag1, "aggr. Time=", formattedTime);
+  const totalDuration = addDurations(duration1, duration2);
+  console.log("total=", totalDuration);
+  cellMinCopy.textContent = totalDuration;
+  cellMinAggr.push(totalDuration);
 }
 
 function km2() {
