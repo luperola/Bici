@@ -29,6 +29,10 @@ function miaScelta() {
   if (selectedScelta === "Stelvio") {
     window.location.href = "stelvio.html";
   }
+
+  if (selectedScelta === "Cancano") {
+    window.location.href = "cancano.html";
+  }
 }
 
 //Example for cell content

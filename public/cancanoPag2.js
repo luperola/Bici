@@ -106,7 +106,6 @@ function page4() {
 }
 
 function page5() {
-  localStorage.setItem("Data5", totalDuration);
   window.location.href = "stelvioPag2.html";
 }
 
@@ -176,6 +175,7 @@ contoClicks12.addEventListener("click", () => {
 
 function km1() {
   var selectedOption = localStorage.getItem("Data1");
+  var timePag1 = localStorage.getItem("Data5");
   roundPm.push(document.getElementById("rpm").value);
 
   // create a table element
@@ -183,11 +183,10 @@ function km1() {
   // create rows and cells
   for (var i = 0; i < 6; i++) {
     var row = document.createElement("tr");
-    for (var j = 0; j < 13; j++) {
+    for (var j = 0; j < 12; j++) {
       var cell = document.createElement("td");
       // set some content for the cell
       //cell.textContent = "Row " + (i + 1) + ", Column " + (j + 1);
-
       cell.style.width = "80px";
       cell.style.height = "30px";
       row.appendChild(cell);
@@ -222,17 +221,17 @@ function km1() {
   }
 
   // scrivo Km su riga 1 le prime 12 colonne
-  km = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  km = [7.5, 8.8, 9.7, 10.5, 11.5, 12.5, 13.9, 14.5, 15.1, 16.3];
   for (let k = 1; k < km.length; k++) {
     var row1plus = document.getElementsByTagName("tr")[0];
     var cellKm = row1plus.getElementsByTagName("td")[k];
     cellKm.style.textAlign = "center";
-    var content1 = km[k].toString();
+    var content1 = km[k].toFixed(1).toString();
     cellKm.textContent = content1;
   }
 
   // scrivo pendenza su riga 2 le prime 12 colonne
-  pendenza = [0, 4.2, 6.3, 6.9, 7.8, 8.4, 4.0, 8.1, 7.8, 6.9, 5.5, 9.5, 8.0];
+  pendenza = [0, 8.3, 6.3, 8.0, 5.3, 3.8, 7.7, 3.5, 1.8, 3.1];
   for (let k = 1; k < pendenza.length; k++) {
     var row1Pend = document.getElementsByTagName("tr")[1];
     var cellPend = row1Pend.getElementsByTagName("td")[k];
@@ -244,18 +243,15 @@ function km1() {
   // scrivo rapporto su riga
   let posizione = [
     "0",
-    "8A",
-    "9A",
-    "9B",
-    "10A",
-    "10A",
-    "8A",
-    "10A",
     "10A",
     "9B",
+    "10A",
     "8B",
-    "10B",
+    "8A",
     "10A",
+    "7B",
+    "7B",
+    "7B",
   ];
   for (let k = 1; k < posizione.length; k++) {
     var row1Pos = document.getElementsByTagName("tr")[5];
@@ -300,8 +296,11 @@ function km1() {
   cellMin.style.textAlign = "center";
   cellMinCopy.style.textAlign = "center";
   cellMin.textContent = formattedTime;
-  cellMinCopy.textContent = formattedTime;
-  cellMinAggr.push(formattedTime);
+  const duration1 = formattedTime;
+  const duration2 = timePag1;
+  const totalDuration = addDurations(duration1, duration2);
+  cellMinCopy.textContent = totalDuration;
+  cellMinAggr.push(totalDuration);
 }
 
 function km2() {
@@ -411,9 +410,6 @@ function kmTest(kilometro) {
   }
   if (kilometro === 9) {
     localStorage.setItem("Data4", totalDuration);
-  }
-  if (kilometro === 12) {
-    localStorage.setItem("Data5", totalDuration);
   }
 }
 

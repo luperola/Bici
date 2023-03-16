@@ -106,8 +106,7 @@ function page4() {
 }
 
 function page5() {
-  localStorage.setItem("Data5", totalDuration);
-  window.location.href = "stelvioPag2.html";
+  window.location.href = "cancanoPag2.html";
 }
 
 var contoClicks = document.getElementById("rpm-button");
@@ -222,17 +221,17 @@ function km1() {
   }
 
   // scrivo Km su riga 1 le prime 12 colonne
-  km = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  km = [0, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 6.2, 6.8, 7.5];
   for (let k = 1; k < km.length; k++) {
     var row1plus = document.getElementsByTagName("tr")[0];
     var cellKm = row1plus.getElementsByTagName("td")[k];
     cellKm.style.textAlign = "center";
-    var content1 = km[k].toString();
+    var content1 = km[k].toFixed(1).toString();
     cellKm.textContent = content1;
   }
 
   // scrivo pendenza su riga 2 le prime 12 colonne
-  pendenza = [0, 4.2, 6.3, 6.9, 7.8, 8.4, 4.0, 8.1, 7.8, 6.9, 5.5, 9.5, 8.0];
+  pendenza = [0, 4.5, 6.6, 4.3, 2.6, -0.7, -0.2, 2.3, 0, -0.6, 7.2, 6.2, 7.5];
   for (let k = 1; k < pendenza.length; k++) {
     var row1Pend = document.getElementsByTagName("tr")[1];
     var cellPend = row1Pend.getElementsByTagName("td")[k];
