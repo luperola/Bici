@@ -244,17 +244,17 @@ function km1() {
   let posizione = [
     "0",
     "8A",
+    "9B",
+    "8A",
+    "7B",
+    "7B",
+    "7B",
+    "7B",
+    "7B",
+    "7B",
+    "9B",
     "9A",
     "9B",
-    "10A",
-    "10A",
-    "8A",
-    "10A",
-    "10A",
-    "9B",
-    "8B",
-    "10B",
-    "10A",
   ];
   for (let k = 1; k < posizione.length; k++) {
     var row1Pos = document.getElementsByTagName("tr")[5];
