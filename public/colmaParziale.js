@@ -1,9 +1,102 @@
-let pendenza = [],
-  km = [],
+let pendenza = [
+    0, 5.0, 6.0, 7.0, 6.0, 5.0, 8.0, 8.0, 7.0, 5.0, 6.0, 5.0, 7, 0, 9, 11, 5, 9,
+    5, 8, 7, 5, 0, 8, 9, 6,
+  ],
+  km = [
+    0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7, 7.5,
+    8, 8.5, 9, 9.5, 10, 11.5, 12, 12.5, 13,
+  ],
+  kmString = [
+    "0",
+    "0.5",
+    "1.0",
+    "1.5",
+    "2.0",
+    "2.5",
+    "3.0",
+    "3.5",
+    "4.0",
+    "4.5",
+    "5.0",
+    "5.5",
+    "6.0",
+    "6.0",
+    "6.5",
+    "7",
+    "7.5",
+    "8",
+    "8.5",
+    "9.0",
+    "9.5",
+    "10",
+    "11.5",
+    "12",
+    "12.5",
+    "13",
+  ],
+  posizione = [
+    "0",
+    "8B",
+    "9A",
+    "9B",
+    "9A",
+    "8B",
+    "10A",
+    "10A",
+    "9B",
+    "8B",
+    "9A",
+    "8B",
+    "9B",
+    "10B",
+    "11A",
+    "8B",
+    "10B",
+    "9A",
+    "10A",
+    "9B",
+    "8B",
+    "7B",
+    "10A",
+    "10B",
+    "9A",
+  ],
   selectedPignone = [],
   roundPm = [],
   cellMinAggr = [],
-  cellMinTempoTotale = [];
+  cellMinTempoTotale = [],
+  newPend = [],
+  kmParz = [],
+  newPos = [];
+
+document.getElementById("fromKm-button").addEventListener("click", function () {
+  var valoreKm = document.getElementById("daKm").value;
+  var indice = kmString.indexOf(valoreKm.toString());
+  var valAKm = document.getElementById("aKm").value;
+  var indAKm = kmString.indexOf(valAKm.toString());
+  console.log("indice", indice, "/valAKm", indAKm);
+  var pendenzaParz = pendenza.splice(
+    parseInt(indice),
+    parseInt(indAKm - indice + 1)
+  );
+  var KmParziale = km.splice(parseInt(indice), parseInt(indAKm - indice + 1));
+  var posizioneParz = posizione.splice(
+    parseInt(indice),
+    parseInt(indAKm - indice + 1)
+  );
+  for (let index = 0; index < pendenzaParz.length; index++) {
+    newPend.push(pendenzaParz[index]);
+    kmParz.push(KmParziale[index]);
+    newPos.push(posizioneParz[index]);
+  }
+  if (newPend.length > 12) {
+    alert("max 12 steps parziali");
+    parziale();
+  }
+  document.getElementById("span1").innerText = newPend[0] + "%";
+});
+
+console.log("nuove arrays", newPend, "//", kmParz, "//", newPos);
 
 const pignoniAnt = document.getElementById("myFront");
 pignoniAnt.addEventListener("change", function () {
@@ -106,7 +199,7 @@ function page4() {
 }
 
 function page5() {
-  window.location.href = "stelvioPag2.html";
+  //window.location.href = "stelvioPag2.html";
 }
 
 function parziale() {
@@ -215,7 +308,7 @@ function km1() {
   // scrivo colonna 1
   let column1 = ["Km", "Pendenza %", "Potenza", "Minuti", "Aggregato", "Pos."];
 
-  for (let k = 0; k < column1.length; k++) {
+  for (let k = 1; k < column1.length; k++) {
     var row1 = document.getElementsByTagName("tr")[k];
     var cell11 = row1.getElementsByTagName("td")[0];
     cell11.style.width = "130px";
@@ -225,46 +318,32 @@ function km1() {
   }
 
   // scrivo Km su riga 1 le prime 12 colonne
-  km = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-  for (let k = 1; k < km.length; k++) {
+
+  for (let k = 0; k < kmParz.length; k++) {
     var row1plus = document.getElementsByTagName("tr")[0];
-    var cellKm = row1plus.getElementsByTagName("td")[k];
+    var cellKm = row1plus.getElementsByTagName("td")[k + 1];
     cellKm.style.textAlign = "center";
-    var content1 = km[k].toString();
+    var content1 = kmParz[k].toString();
     cellKm.textContent = content1;
   }
 
   // scrivo pendenza su riga 2 le prime 12 colonne
-  pendenza = [0, 4.2, 6.3, 6.9, 7.8, 8.4, 4.0, 8.1, 7.8, 6.9, 5.5, 9.5, 8.0];
-  for (let k = 1; k < pendenza.length; k++) {
+
+  for (let k = 0; k < newPend.length; k++) {
     var row1Pend = document.getElementsByTagName("tr")[1];
-    var cellPend = row1Pend.getElementsByTagName("td")[k];
+    var cellPend = row1Pend.getElementsByTagName("td")[k + 1];
     cellPend.style.textAlign = "center";
-    var content2 = pendenza[k].toFixed(1).toString();
+    var content2 = newPend[k].toFixed(1).toString();
     cellPend.textContent = content2;
   }
 
   // scrivo rapporto su riga
-  let posizione = [
-    "0",
-    "8A",
-    "9A",
-    "9B",
-    "10A",
-    "10A",
-    "8A",
-    "10A",
-    "10A",
-    "9B",
-    "8B",
-    "10B",
-    "10A",
-  ];
-  for (let k = 1; k < posizione.length; k++) {
+
+  for (let k = 0; k < newPos.length; k++) {
     var row1Pos = document.getElementsByTagName("tr")[5];
-    var cellPos = row1Pos.getElementsByTagName("td")[k];
+    var cellPos = row1Pos.getElementsByTagName("td")[k + 1];
     cellPos.style.textAlign = "center";
-    var content2 = posizione[k];
+    var content2 = newPos[k];
     cellPos.textContent = content2;
   }
 
@@ -277,7 +356,7 @@ function km1() {
 
   var powerKm1 =
     parseFloat(selectedOption) *
-      parseFloat(pendenza[1] / 100) *
+      parseFloat(newPend[1] / 100) *
       velocitaKm1 *
       9.81 +
     parseFloat(selectedOption) * velocitaKm1 * 0.03924 +
@@ -317,7 +396,7 @@ function km2() {
 
   var powerKm1 =
     parseFloat(selectedOption) *
-      parseFloat(pendenza[2] / 100) *
+      parseFloat(newPend[2] / 100) *
       velocitaKm2 *
       9.81 +
     parseFloat(selectedOption) * velocitaKm2 * 0.03924 +
@@ -365,15 +444,9 @@ function kmTest(kilometro) {
       parseFloat(roundPm[kilometro - 1]) *
       1.507) /
     60;
-  // console.log(
-  //   "pignone=",
-  //   selectedPignone[kilometro - 1],
-  //   "RPM=",
-  //   roundPm[kilometro - 1]
-  // );
   var powerKm1 =
     parseFloat(selectedOption) *
-      parseFloat(pendenza[kilometro] / 100) *
+      parseFloat(newPend[kilometro] / 100) *
       velocitaKm3 *
       9.81 +
     parseFloat(selectedOption) * velocitaKm3 * 0.03924 +

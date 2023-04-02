@@ -10,29 +10,55 @@
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
-    <script src="stelvio.js" defer></script>
+    <script src="colmaParziale.js" defer></script>
     <link rel="stylesheet" href="style.css" type="text/css" />
   </head>
 
   <!-- npm start per iniziare con nodemon -->
   <body>
     <br />
-    <h2 style="padding-left: 20px">Stelvio da Bormio</h2>
-    <a class="btn btn-secondary" href="stelvioParziale.html" target="_blank">
-      Parziale
-    </a>
 
-    <h6 style="padding-left: 20px; display: none" id="tempoTotalePag1"></h6>
-
-    <br />
     <div class="container" id="container1">
+      <h2 style="padding-left: 20px">
+        Colma - Parziale
+        <span style="font-size: 12px"
+          >0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.0,
+          6.5, 7, 7.5, 8, 8.5,9, 9.5, 10, 11.5, 12, 12.5, 13</span
+        >
+      </h2>
+      <br />
+
+      <div style="display: flex; justify-content: center">
+        <div class="input-group" id="fromKm">
+          <input
+            type="number"
+            class="form-control"
+            id="daKm"
+            placeholder="da Km"
+          />
+          <input
+            type="number"
+            class="form-control"
+            id="aKm"
+            placeholder=" fino a Km"
+          />
+          <button class="btn btn-primary" type="button" id="fromKm-button">
+            Click here to start
+          </button>
+        </div>
+      </div>
+      <br /><br /><br />
       <div style="display: flex; justify-content: center">
         <h3 class="pKm">
-          Select for Km 1 <span style="font-size: 10px">pend. 4.2%</span>
+          Select for Km 1 <span style="font-size: 10px" id="span1"></span>
         </h3>
         <h3 class="pKm">Select for Km 2</h3>
         <h3 class="pKm">Select for Km 3</h3>
       </div>
+
+      <h6 style="padding-left: 20px; display: none" id="tempoTotalePag1"></h6>
+
+      <br />
 
       <div style="display: flex; justify-content: center">
         <select id="myFront" class="form-select">
@@ -377,7 +403,6 @@
       <br /><br />
       <button class="btn btn-primary" onclick="page5()" id="page5">Next</button>
     </div>
-
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
       integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"

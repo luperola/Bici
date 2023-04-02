@@ -4,6 +4,7 @@ let pendenza = [],
   roundPm = [],
   cellMinAggr = [],
   cellMinTempoTotale = [];
+// console.log("tempo da pag1 = ", localStorage.getItem("Data5"));
 
 const pignoniAnt = document.getElementById("myFront");
 pignoniAnt.addEventListener("change", function () {
@@ -109,10 +110,6 @@ function page5() {
   window.location.href = "stelvioPag2.html";
 }
 
-function parziale() {
-  window.location.href = "stelvioParziale.html";
-}
-
 var contoClicks = document.getElementById("rpm-button");
 contoClicks.addEventListener("click", () => {
   km1();
@@ -179,6 +176,7 @@ contoClicks12.addEventListener("click", () => {
 
 function km1() {
   var selectedOption = localStorage.getItem("Data1");
+  var timePag1 = localStorage.getItem("Data5");
   roundPm.push(document.getElementById("rpm").value);
 
   // create a table element
@@ -186,11 +184,10 @@ function km1() {
   // create rows and cells
   for (var i = 0; i < 6; i++) {
     var row = document.createElement("tr");
-    for (var j = 0; j < 13; j++) {
+    for (var j = 0; j < 12; j++) {
       var cell = document.createElement("td");
       // set some content for the cell
       //cell.textContent = "Row " + (i + 1) + ", Column " + (j + 1);
-
       cell.style.width = "80px";
       cell.style.height = "30px";
       row.appendChild(cell);
@@ -225,7 +222,7 @@ function km1() {
   }
 
   // scrivo Km su riga 1 le prime 12 colonne
-  km = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  km = [6, 6.5, 7, 7.5, 8, 8.59, 9.5, 10, 11.5, 12, 12.5, 13];
   for (let k = 1; k < km.length; k++) {
     var row1plus = document.getElementsByTagName("tr")[0];
     var cellKm = row1plus.getElementsByTagName("td")[k];
@@ -235,7 +232,7 @@ function km1() {
   }
 
   // scrivo pendenza su riga 2 le prime 12 colonne
-  pendenza = [0, 4.2, 6.3, 6.9, 7.8, 8.4, 4.0, 8.1, 7.8, 6.9, 5.5, 9.5, 8.0];
+  pendenza = [0, 9, 11, 5, 9, 5, 8, 7, 5, 0, 8, 9, 6];
   for (let k = 1; k < pendenza.length; k++) {
     var row1Pend = document.getElementsByTagName("tr")[1];
     var cellPend = row1Pend.getElementsByTagName("td")[k];
@@ -247,18 +244,18 @@ function km1() {
   // scrivo rapporto su riga
   let posizione = [
     "0",
-    "8A",
+    "10B",
+    "11A",
+    "8B",
+    "10B",
     "9A",
-    "9B",
-    "10A",
-    "10A",
-    "8A",
-    "10A",
     "10A",
     "9B",
     "8B",
-    "10B",
+    "7B",
     "10A",
+    "10B",
+    "9A",
   ];
   for (let k = 1; k < posizione.length; k++) {
     var row1Pos = document.getElementsByTagName("tr")[5];
@@ -303,8 +300,11 @@ function km1() {
   cellMin.style.textAlign = "center";
   cellMinCopy.style.textAlign = "center";
   cellMin.textContent = formattedTime;
-  cellMinCopy.textContent = formattedTime;
-  cellMinAggr.push(formattedTime);
+  const duration1 = formattedTime;
+  const duration2 = timePag1;
+  const totalDuration = addDurations(duration1, duration2);
+  cellMinCopy.textContent = totalDuration;
+  cellMinAggr.push(totalDuration);
 }
 
 function km2() {
@@ -415,9 +415,6 @@ function kmTest(kilometro) {
   if (kilometro === 9) {
     localStorage.setItem("Data4", totalDuration);
   }
-  if (kilometro === 12) {
-    localStorage.setItem("Data5", totalDuration);
-  }
 }
 
 function addDurations(duration1, duration2) {
@@ -446,3 +443,35 @@ function addDurations(duration1, duration2) {
 // var cell5 = row3.getElementsByTagName("td")[4];
 // var content = "This cell has a variable";
 // cell5.textContent = content;
+
+//   // Set the duration of the timer in seconds
+//   const duration = 0;
+
+//   // Select the HTML element where the timer will be displayed
+//   const timerElement = document.getElementById("timer");
+
+//   // Set the initial time remaining to the duration
+//   let timeRemaining = duration;
+
+//   // Update the timer every second
+//   const timerInterval = setInterval(() => {
+//     // Decrement the time remaining by 1 second
+//     timeRemaining++;
+
+//     // Calculate the minutes and seconds remaining
+//     const minutes = Math.floor(timeRemaining / 60);
+//     const seconds = timeRemaining % 60;
+//     // Format the time as a string and display it in the timer element
+//     const timeString =
+//       minutes.toString().padStart(2, "0") +
+//       ":" +
+//       seconds.toString().padStart(2, "0");
+//     // console.log("time", timeString)
+
+//     document.getElementById("clock").innerHTML = timeString;
+
+//     // If the time has run out, stop the timer
+//     if (timeRemaining === 0) {
+//       clearInterval(timerInterval);
+//     }
+//   }, 1000);

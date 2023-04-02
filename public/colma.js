@@ -106,11 +106,7 @@ function page4() {
 }
 
 function page5() {
-  window.location.href = "stelvioPag2.html";
-}
-
-function parziale() {
-  window.location.href = "stelvioParziale.html";
+  window.location.href = "colmaPag2.html";
 }
 
 var contoClicks = document.getElementById("rpm-button");
@@ -225,17 +221,17 @@ function km1() {
   }
 
   // scrivo Km su riga 1 le prime 12 colonne
-  km = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  km = [0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0];
   for (let k = 1; k < km.length; k++) {
     var row1plus = document.getElementsByTagName("tr")[0];
     var cellKm = row1plus.getElementsByTagName("td")[k];
     cellKm.style.textAlign = "center";
-    var content1 = km[k].toString();
+    var content1 = km[k].toFixed(1).toString();
     cellKm.textContent = content1;
   }
 
   // scrivo pendenza su riga 2 le prime 12 colonne
-  pendenza = [0, 4.2, 6.3, 6.9, 7.8, 8.4, 4.0, 8.1, 7.8, 6.9, 5.5, 9.5, 8.0];
+  pendenza = [0, 5.0, 6.0, 7.0, 6.0, 5.0, 8.0, 8.0, 7.0, 5.0, 6.0, 5.0, 7.0];
   for (let k = 1; k < pendenza.length; k++) {
     var row1Pend = document.getElementsByTagName("tr")[1];
     var cellPend = row1Pend.getElementsByTagName("td")[k];
@@ -247,18 +243,18 @@ function km1() {
   // scrivo rapporto su riga
   let posizione = [
     "0",
-    "8A",
+    "8B",
     "9A",
     "9B",
-    "10A",
-    "10A",
-    "8A",
+    "9A",
+    "8B",
     "10A",
     "10A",
     "9B",
     "8B",
-    "10B",
-    "10A",
+    "9A",
+    "8B",
+    "9B",
   ];
   for (let k = 1; k < posizione.length; k++) {
     var row1Pos = document.getElementsByTagName("tr")[5];
@@ -446,3 +442,35 @@ function addDurations(duration1, duration2) {
 // var cell5 = row3.getElementsByTagName("td")[4];
 // var content = "This cell has a variable";
 // cell5.textContent = content;
+
+//   // Set the duration of the timer in seconds
+//   const duration = 0;
+
+//   // Select the HTML element where the timer will be displayed
+//   const timerElement = document.getElementById("timer");
+
+//   // Set the initial time remaining to the duration
+//   let timeRemaining = duration;
+
+//   // Update the timer every second
+//   const timerInterval = setInterval(() => {
+//     // Decrement the time remaining by 1 second
+//     timeRemaining++;
+
+//     // Calculate the minutes and seconds remaining
+//     const minutes = Math.floor(timeRemaining / 60);
+//     const seconds = timeRemaining % 60;
+//     // Format the time as a string and display it in the timer element
+//     const timeString =
+//       minutes.toString().padStart(2, "0") +
+//       ":" +
+//       seconds.toString().padStart(2, "0");
+//     // console.log("time", timeString)
+
+//     document.getElementById("clock").innerHTML = timeString;
+
+//     // If the time has run out, stop the timer
+//     if (timeRemaining === 0) {
+//       clearInterval(timerInterval);
+//     }
+//   }, 1000);

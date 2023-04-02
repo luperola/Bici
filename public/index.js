@@ -33,6 +33,9 @@ function miaScelta() {
   if (selectedScelta === "Cancano") {
     window.location.href = "cancano.html";
   }
+  if (selectedScelta === "Colma") {
+    window.location.href = "colma.html";
+  }
 }
 
 //Example for cell content

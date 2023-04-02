@@ -4,7 +4,9 @@ let pendenza = [],
   roundPm = [],
   cellMinAggr = [],
   cellMinTempoTotale = [];
-// console.log("tempo da pag1 = ", localStorage.getItem("Data5"));
+
+document.getElementById("tempoTotalePag1").innerHTML =
+  localStorage.getItem("Data5");
 
 const pignoniAnt = document.getElementById("myFront");
 pignoniAnt.addEventListener("change", function () {
@@ -227,17 +229,17 @@ function km1() {
     var row1plus = document.getElementsByTagName("tr")[0];
     var cellKm = row1plus.getElementsByTagName("td")[k];
     cellKm.style.textAlign = "center";
-    var content1 = km[k].toString();
+    var content1 = km[k].toFixed(1).toString();
     cellKm.textContent = content1;
   }
 
   // scrivo pendenza su riga 2 le prime 12 colonne
-  pendenza = [0, 7.5, 7.7, 7.9, 8.9, 6.5, 3.1, 6.8, 6.1, 8.2, 8.1, 8.1];
+  pendenza = [0, 7.5, 7.7, 7.9, 8.9, 6.5, 3.0, 6.8, 6.1, 8.2, 8.1, 8.0];
   for (let k = 1; k < pendenza.length; k++) {
     var row1Pend = document.getElementsByTagName("tr")[1];
     var cellPend = row1Pend.getElementsByTagName("td")[k];
     cellPend.style.textAlign = "center";
-    var content2 = pendenza[k].toString();
+    var content2 = pendenza[k].toFixed(1).toString();
     cellPend.textContent = content2;
   }
 
